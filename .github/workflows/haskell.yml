@@ -13,17 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-haskell@v1
-      with:
-        ghc-version: '8.8.2'
-        cabal-version: '3.0'
+    - name: Setup stack
+      uses: mstksg/setup-stack@v1
     - name: Install dependencies
       run: |
-        cabal update
-        cabal install --only-dependencies --enable-tests
+        stack --no-terminal --install-ghc --only-dependencies
     - name: Build
       run: |
-        cabal configure --enable-tests
-        cabal build
+        stack --no-terminal build
     - name: Run tests
-      run: cabal test
+      run: |
+        stack --no-terminal test
