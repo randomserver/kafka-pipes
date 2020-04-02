@@ -17,7 +17,7 @@ jobs:
       uses: mstksg/setup-stack@v1
     - name: Install dependencies
       run: |
-        stack --no-terminal --install-ghc --only-dependencies
+        stack --no-terminal --install-ghc setup
     - name: Build
       run: |
         stack --no-terminal build
