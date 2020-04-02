@@ -1,0 +1,58 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: a40bc0617c846ad46bde5e34f8fffa489196e1dd9d8ccb1bad1706917a901726
+
+name:           kafka-pipes
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/kaffepanna/kafka-pipes#readme>
+homepage:       https://github.com/kaffepanna/kafka-pipes#readme
+bug-reports:    https://github.com/kaffepanna/kafka-pipes/issues
+author:         Patrik Pettersson
+maintainer:     pettersson.pa@gmail.com
+copyright:      2020 Patrik Pettersson
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/kaffepanna/kafka-pipes
+
+library
+  exposed-modules:
+      Kafka.Pipes
+  other-modules:
+      Paths_kafka_pipes
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , exceptions
+    , hw-kafka-client
+    , pipes
+    , pipes-safe
+  default-language: Haskell2010
+
+test-suite kafka-pipes-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_kafka_pipes
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , exceptions
+    , hw-kafka-client
+    , kafka-pipes
+    , pipes
+    , pipes-safe
+  default-language: Haskell2010
