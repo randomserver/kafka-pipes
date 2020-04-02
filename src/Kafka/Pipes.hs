@@ -1,15 +1,14 @@
 {-# LANGUAGE LambdaCase #-}
-module Kafka.Pipes (kafkaProducer) where
+module Kafka.Pipes (kafkaSink) where
 
 import Control.Concurrent.MVar (newEmptyMVar, putMVar, takeMVar)
 import Control.Monad.IO.Class (liftIO)
 import Control.Monad.Catch (bracket, MonadMask)
+import Data.Functor ((<&>))
 import Pipes
 import Pipes.Safe (MonadSafe)
 import Kafka.Producer
 import Kafka.Consumer (Offset)
-
-(<&>) = flip fmap
 
 sendMessageSync :: MonadIO m
                 => KafkaProducer
@@ -37,10 +36,10 @@ sendMessageSync producer record = liftIO $ do
         DeliveryFailure _ err    -> Left err
         NoMessageError err       -> Left err
 
-kafkaProducer :: (MonadIO m, MonadMask m) 
+kafkaSink :: (MonadIO m, MonadMask m) 
           => ProducerProperties
           -> Consumer ProducerRecord m ()
-kafkaProducer props = void $ bracket connect release publish
+kafkaSink props = void $ bracket connect release publish
   where
     connect = liftIO $ newProducer props
     
