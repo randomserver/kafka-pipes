@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: a40bc0617c846ad46bde5e34f8fffa489196e1dd9d8ccb1bad1706917a901726
+-- hash: a831b1696a815aed688655680b146420eea9fae49b0409e96e116d8eb2d9ef54
 
 name:           kafka-pipes
 version:        0.1.0.0
@@ -27,13 +27,15 @@ source-repository head
 
 library
   exposed-modules:
-      Kafka.Pipes
+      Kafka.Pipes.Sink
+      Kafka.Pipes.Source
   other-modules:
       Paths_kafka_pipes
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , bytestring
     , exceptions
     , hw-kafka-client
     , pipes
@@ -50,6 +52,7 @@ test-suite kafka-pipes-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bytestring
     , exceptions
     , hw-kafka-client
     , kafka-pipes

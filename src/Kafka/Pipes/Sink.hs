@@ -1,5 +1,5 @@
 {-# LANGUAGE LambdaCase #-}
-module Kafka.Pipes (kafkaSink) where
+module Kafka.Pipes.Sink (kafkaSink) where
 
 import Control.Concurrent.MVar (newEmptyMVar, putMVar, takeMVar)
 import Control.Monad.IO.Class (liftIO)
