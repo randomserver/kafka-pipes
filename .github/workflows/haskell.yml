@@ -18,7 +18,7 @@ jobs:
       name: Cache stack
       with:
         path: ${HOME}/.stack
-        key: ${{ os.runner }}-stack
+        key: ${{ runner.os }}-stack
     - name: Install dependencies
       run: |
         sudo apt-get install -y librdkafka-dev
