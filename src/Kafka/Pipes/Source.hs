@@ -19,6 +19,7 @@ kafkaSource props sub = void $ bracket mkConsumer clConsumer consumerSub
         consumerSub (Right consumer) = do
           mMsg <- liftIO $ pollMessage consumer (Timeout 1000)
           case mMsg of
+            Left (KafkaResponseError RdKafkaRespErrTimedOut) -> consumerSub $ Right consumer
             Left err    -> return $ Left err
             Right msg -> do 
               yield msg
