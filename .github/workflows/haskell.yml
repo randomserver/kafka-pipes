@@ -17,7 +17,7 @@ jobs:
     - uses: actions/cache@v1
       name: Cache stack
       with:
-        path: $HOME/.stack
+        path: ~/.stack
         key: ${{ runner.os }}-stack
     - name: Install dependencies
       run: |
