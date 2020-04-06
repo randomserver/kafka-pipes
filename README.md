@@ -1,5 +1,7 @@
 # kafka-pipes
 
+![Haskell CI](https://github.com/kaffepanna/kafka-pipes/workflows/Haskell%20CI/badge.svg)
+
 Simple kafka source/sink in the [Pipes](https://hackage.haskell.org/package/pipes) ecosystem.
 Based on the [hw-kafka-client](https://github.com/haskell-works/hw-kafka-client) library from [haskell works]()
 
