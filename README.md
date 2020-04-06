@@ -29,7 +29,7 @@ consumerSub :: Subscription
 consumerSub = topics [TopicName "topic.name"]
            <> offsetReset Earliest
 
-topicPrinter = source >-> value >-> PP.show
+topicPrinter = source >-> value >-> PP.print
     where source = kafkaSource consumerProps consumerSub
           value (ConsumerRecord topic partition offset timestamp key value) = yield value
 ```
